@@ -4,15 +4,13 @@ import sys
 
 
 class ProGenerator(object):
-    def __init__(self):
+    def __init__(self, proName, rootDir):
         super().__init__()
         self.pyFiles = list()
         self.uiFiles = list()
-        proDir = sys.path[0]
-        proDirName = os.path.basename(proDir)
         
-        self.proFile = proDir + "/" + proDirName + ".pro"        
-        self.tsFile = os.path.relpath(proDir + "/" + proDirName + ".ts")
+        self.proFile = rootDir + "/" + proName + ".pro"
+        self.tsFile = os.path.relpath(rootDir + "/" + proName + ".ts")
         print(self.proFile)
         
     def addFiles(self, files):
@@ -54,13 +52,17 @@ def addDir(dirPath, proFileGenerator):
 if __name__ == "__main__":
     #os.chdir(os.path.dirname(__file__)) # 当前把生成工具放在工程根目录
     # rootDir = os.path.dirname(__file__)
-    os.chdir(sys.path[0])
+    proName = os.path.basename(sys.path[0])
+    if len(sys.argv) >= 2:
+        proName = sys.argv[1]
+
     rootDir = sys.path[0]
+    os.chdir(rootDir)
     
     ignoreRootDirs = set((".idea", "font", "resource", os.path.basename(__file__)))
     ignoreDirs = (".idea", "__pycache__")
     
-    proFileGenerator = ProGenerator()
+    proFileGenerator = ProGenerator(proName, rootDir)
     
     rootLevelFiles = os.listdir(rootDir)
     for file in rootLevelFiles:
