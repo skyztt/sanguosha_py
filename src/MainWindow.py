@@ -1,9 +1,8 @@
 from PyQt5.QtWidgets import QAction
 from PyQt5.QtWidgets import (QMainWindow, QGraphicsView)
 
-from src.StartScene import StartScene
-
-from src.Settings import Config
+from StartScene import StartScene
+from Settings import Config
 
 
 class MainWindow(QMainWindow):

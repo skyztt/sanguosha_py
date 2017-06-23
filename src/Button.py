@@ -9,7 +9,7 @@ from PyQt5.QtWidgets import QAction
 from PyQt5.QtWidgets import QGraphicsItem
 from PyQt5.QtWidgets import QGraphicsObject
 
-from src.Settings import Config
+from Settings import Config
 
 
 class Button(QGraphicsObject):

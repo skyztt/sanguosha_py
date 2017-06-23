@@ -3,9 +3,9 @@ from PyQt5.QtGui import QBrush
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import (QGraphicsScene)
 
-from src.Button import Button
-from src.Pixmap import Pixmap
-from src.Settings import Config
+from Button import Button
+from Pixmap import Pixmap
+from Settings import Config
 
 
 class StartScene(QGraphicsScene):
