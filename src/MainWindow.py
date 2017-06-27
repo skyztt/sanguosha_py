@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import (QMainWindow, QGraphicsView)
 
 from StartScene import StartScene
 from Settings import Config
+from RoomScene import RoomScene
 
 
 class MainWindow(QMainWindow):
@@ -16,7 +17,7 @@ class MainWindow(QMainWindow):
 
         self.gameMenu = self.menuBar().addMenu(self.tr("Game"))
         # Sample : QAction(QIcon("res/ico/addAvatar.ico"), "&Add Avatar", self, triggered=self.addAvatar)
-        self.startGameAction = QAction(self.tr("Start Game"), self, triggered=self.close)
+        self.startGameAction = QAction(self.tr("Start Game"), self, triggered=lambda : self.gotoScene(RoomScene()))
         self.gameMenu.addAction(self.startGameAction)
         self.exitAction = QAction(self.tr("Exit"), self, triggered=self.close)
         self.gameMenu.addAction(self.exitAction)
@@ -42,6 +43,13 @@ class MainWindow(QMainWindow):
             self.scene.addButton(action)
 
         self.restoreFromConfig()
+
+    def gotoScene(self, scene):
+        view = self.centralWidget()
+        view.setScene(scene);
+
+        self.scene.deleteLater();
+        self.scene = scene;
 
     def restoreFromConfig(self):
         self.resize(Config.value("WindowSize"))
