@@ -3,7 +3,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QGraphicsItem
 from PyQt5.QtWidgets import QMessageBox
 
-import Card
+from Card import Card
 from Pixmap import Pixmap
 
 

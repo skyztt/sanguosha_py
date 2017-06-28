@@ -6,7 +6,7 @@ from PyQt5.QtWidgets import QGraphicsObject
 
 
 class Pixmap(QGraphicsObject):
-    def __init__(self, fileName, parent=None):
+    def __init__(self, fileName="", parent=None):
         super().__init__(parent)
         self.pixmap = QPixmap(fileName)
         self.setTransformOriginPoint(self.pixmap.width() / 2, self.pixmap.height() / 2)

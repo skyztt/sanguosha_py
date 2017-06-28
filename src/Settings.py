@@ -12,8 +12,8 @@ class Settings(QSettings):
     def __init__(self, organization, application):
         super().__init__(organization, application)
         self.Rect = QRectF(-ViewWidth/2, -ViewHeight/2,ViewWidth, ViewHeight)
-        #font_path = self.value("DefaultFontPath", "font/girl.ttf")
-        #font_id = QFontDatabase.addApplicationFont(font_path) 这里字体一直无法加载，每次调用到这里程序自动退出？？
+        # font_path = self.value("DefaultFontPath", "font/girl.ttf")
+        # font_id = QFontDatabase.addApplicationFont(font_path) # 这里字体一直无法加载，每次调用到这里程序自动退出？？
         font_id = -1
         self.BigFont = QFont()
         self.SmallFont = QFont()

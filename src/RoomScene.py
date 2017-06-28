@@ -7,6 +7,9 @@ from PyQt5.QtGui import QBrush
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QGraphicsScene
 
+from Card import Card
+from Dashboard import Dashboard
+from General import General
 from Photo import Photo
 from Settings import Config
 
@@ -46,4 +49,43 @@ class RoomScene(QGraphicsScene):
         self.photos[5].loadAvatar("generals/small/zhugeliang.png")
         self.photos[6].loadAvatar("generals/small/zhouyu.png")
 
+        self.dashboard = Dashboard()
+        self.dashboard.setGeneral(General("caocao", "wei", 4, True))
+        self.addItem(self.dashboard)
+
+        start_pos = Config.Rect.topLeft()
+        end_pos = QPointF(Config.Rect.x(), Config.Rect.bottom() - self.dashboard.boundingRect().height())
+        duration = 1500
+
+        translation = QPropertyAnimation(self.dashboard, bytes("pos", 'utf-8'))
+        translation.setStartValue(start_pos)
+        translation.setEndValue(end_pos)
+        translation.setEasingCurve(QEasingCurve.OutBounce)
+        translation.setDuration(duration)
+
+        enlarge =  QPropertyAnimation(self.dashboard, bytes("scale", 'utf-8'))
+        enlarge.setStartValue(0.2)
+        enlarge.setEndValue(1.0)
+        enlarge.setEasingCurve(QEasingCurve.OutBounce)
+        enlarge.setDuration(duration)
+
+        group.addAnimation(translation)
+        group.addAnimation(enlarge)
+
         group.start(QAbstractAnimation.DeleteWhenStopped)
+
+        card1 = Card("savage_assault", Card.Spade, 1)
+        card2 = Card("slash", Card.Club, 7)
+        card3 = Card("jink", Card.Heart, 2)
+        card4 = Card("peach", Card.Diamond, 10)
+        card5 = Card("archery_attack", Card.Heart, 11)
+        card6 = Card("crossbow", Card.Club, 12)
+
+        self.dashboard.addCard(card1)
+        self.dashboard.addCard(card2)
+        self.dashboard.addCard(card3)
+        self.dashboard.addCard(card4)
+        self.dashboard.addCard(card5)
+        self.dashboard.addCard(card6)
+
+        card4.setEnabled(False)
