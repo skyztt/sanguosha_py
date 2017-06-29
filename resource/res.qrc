@@ -6,5 +6,10 @@
         <file>images/avatar-frame.png</file>
         <file>images/dashboard.png</file>
         <file>images/pile.png</file>
+        <file>images/magatamas/1.png</file>
+        <file>images/magatamas/2.png</file>
+        <file>images/magatamas/3.png</file>
+        <file>images/magatamas/4.png</file>
+        <file>images/magatamas/5.png</file>
     </qresource>
 </RCC>
